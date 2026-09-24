@@ -1,4 +1,6 @@
-import { Badge, Text } from '@seed-design/react'
+import IconHeartFill from '@karrotmarket/react-monochrome-icon/IconHeartFill'
+import IconHeartLine from '@karrotmarket/react-monochrome-icon/IconHeartLine'
+import { Badge, Icon, Text } from '@seed-design/react'
 import { useEffect, useRef, useState } from 'react'
 import { ActionButton } from 'seed-design/ui/action-button'
 import { Chip } from 'seed-design/ui/chip'
@@ -127,7 +129,7 @@ function MotionDemo() {
         onClick={toggleLike}
       >
         <span className="like-button__heart" aria-hidden="true">
-          ♥
+          <Icon svg={liked ? <IconHeartFill /> : <IconHeartLine />} size="x5" />
         </span>
         <span>관심 {count}</span>
       </button>

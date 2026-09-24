@@ -396,10 +396,8 @@ a {
 }
 
 .like-button__heart {
-  display: inline-block;
-  color: var(--seed-color-fg-disabled);
-  font-size: 22px;
-  line-height: 1;
+  display: inline-flex;
+  color: var(--seed-color-fg-neutral-subtle);
 }
 
 .like-button[data-liked] {
