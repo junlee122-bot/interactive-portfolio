@@ -1,5 +1,5 @@
 import { Text } from '@seed-design/react'
-import { profile } from '../data'
+import { profile } from '../data/profile'
 
 export function SiteFooter() {
   return (

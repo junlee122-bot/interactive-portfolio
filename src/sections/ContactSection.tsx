@@ -6,7 +6,7 @@ import { Icon, PrefixIcon, SuffixIcon, Text } from '@seed-design/react'
 import { ActionButton } from 'seed-design/ui/action-button'
 import { List, ListLinkItem } from 'seed-design/ui/list'
 import { Snackbar, useSnackbarAdapter } from 'seed-design/ui/snackbar'
-import { profile } from '../data'
+import { profile } from '../data/profile'
 
 export function ContactSection() {
   const snackbar = useSnackbarAdapter()
@@ -35,8 +35,7 @@ export function ContactSection() {
             하나부터 이야기해요.
           </h2>
           <Text as="p" textStyle="t5Regular" color="fg.neutralMuted">
-            완성된 기획서가 아니어도 좋습니다. 어떤 사용자가 어디에서 막히는지, 어떤 경험을 더 낫게 만들고 싶은지. 그 질문에서
-            출발하고 싶습니다.
+            함께 만들고 싶은 제품, 공모전, 풀고 싶은 문제가 있다면 GitHub로 연락해 주세요. 어떤 사람이 어디에서 막히는지, 그 한 문장이면 시작할 수 있습니다.
           </Text>
           <div className="hero__actions">
             <ActionButton asChild variant="brandSolid" size="large">

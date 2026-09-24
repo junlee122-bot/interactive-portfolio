@@ -1,12 +1,11 @@
 import IconArrowDownLine from '@karrotmarket/react-monochrome-icon/IconArrowDownLine'
 import IconArrowUpRightLine from '@karrotmarket/react-monochrome-icon/IconArrowUpRightLine'
-import IconLocationpinLine from '@karrotmarket/react-monochrome-icon/IconLocationpinLine'
-import { Badge, Icon, SuffixIcon } from '@seed-design/react'
+import { Badge, SuffixIcon } from '@seed-design/react'
 import { ActionButton } from 'seed-design/ui/action-button'
-import { HeroDevice } from '../components/HeroDevice'
-import { profile } from '../data'
+import { HeroStack } from '../components/HeroStack'
+import { profile, stats } from '../data/profile'
 
-export function HeroSection() {
+export function HeroSection({ onOpenProject }: { onOpenProject: (slug: string) => void }) {
   return (
     <section className="hero" id="top" aria-labelledby="hero-title">
       <div className="container hero__grid">
@@ -20,23 +19,24 @@ export function HeroSection() {
             </Badge>
           </div>
 
+          <p className="hero__name">
+            {profile.name} <span>{profile.latinName}</span>
+          </p>
           <h1 id="hero-title" className="hero__title">
-            질문에서 시작해
+            아이디어를
             <br />
-            <span className="hero__title-accent">상태로 설계하고,</span>
-            <br />
-            인터랙션으로 증명합니다.
+            <span className="hero__title-accent">배포까지</span> 끌고 갑니다.
           </h1>
 
           <p className="hero__lead">
-            안녕하세요, 프런트엔드 엔지니어 {profile.name}입니다. 사용자가 해야 할 일과 화면이 전달해야 할 상태를 먼저
-            구분하고, 키보드·작은 화면·줄인 모션에서도 같은 경험이 남도록 만듭니다.
+            {profile.since}부터 AI 코딩 에이전트를 팀처럼 운용해 앱, 게임, 데이터 도구, 아카이브를 만들어 왔습니다. 문제를 정하고,
+            작업을 명세로 나눠 맡기고, 검증 장치로 결과를 확인하고, 한계까지 적어 공개하는 일을 제가 맡습니다.
           </p>
 
           <div className="hero__actions">
             <ActionButton asChild variant="brandSolid" size="large">
               <a href="#work">
-                작업 살펴보기
+                작업 보기
                 <SuffixIcon svg={<IconArrowDownLine />} />
               </a>
             </ActionButton>
@@ -48,13 +48,17 @@ export function HeroSection() {
             </ActionButton>
           </div>
 
-          <p className="hero__note">
-            <Icon svg={<IconLocationpinLine />} size="x4" />
-            이 사이트는 당근의 오픈소스 디자인 시스템 SEED Design으로 다시 만들었습니다.
-          </p>
+          <dl className="hero-stats">
+            {stats.map((stat) => (
+              <div key={stat.label}>
+                <dt>{stat.label}</dt>
+                <dd>{stat.value}</dd>
+              </div>
+            ))}
+          </dl>
         </div>
 
-        <HeroDevice />
+        <HeroStack onOpenProject={onOpenProject} />
       </div>
     </section>
   )
