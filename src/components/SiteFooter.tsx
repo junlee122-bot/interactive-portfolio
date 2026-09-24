@@ -1,11 +1,21 @@
-import { ArrowUpRight } from './Icons'
+import { Text } from '@seed-design/react'
+import { profile } from '../data'
 
 export function SiteFooter() {
   return (
     <footer className="site-footer">
-      <p>DESIGNED WITH INTENTION.<br />BUILT WITH CURIOSITY.</p>
-      <a href="#top">BACK TO ORBIT <ArrowUpRight size={15} /></a>
-      <p>© 2026 LEE JUN.<br />ALL PIXELS ACCOUNTED FOR.</p>
+      <div className="container site-footer__inner">
+        <Text textStyle="t3Regular" color="fg.neutralSubtle">
+          © 2026 {profile.latinName}. Built with React, TypeScript and{' '}
+          <a href="https://github.com/daangn/seed-design" target="_blank" rel="noreferrer">
+            SEED Design
+          </a>
+          .
+        </Text>
+        <a className="site-footer__top" href="#top">
+          맨 위로 ↑
+        </a>
+      </div>
     </footer>
   )
 }

@@ -1,8 +1,8 @@
-import { useRef, type MouseEvent } from 'react'
-import type { Project } from '../types'
-import { ArrowUpRight } from './Icons'
-import { ProjectVisual } from './ProjectVisual'
-import { useReducedMotion } from '../hooks/useReducedMotion'
+import IconArrowRightLine from '@karrotmarket/react-monochrome-icon/IconArrowRightLine'
+import { Badge, SuffixIcon, Text } from '@seed-design/react'
+import { ActionButton } from 'seed-design/ui/action-button'
+import type { Project } from '../data'
+import { ProjectSpecimen } from '../specimens/ProjectSpecimen'
 
 interface ProjectCardProps {
   project: Project
@@ -10,72 +10,53 @@ interface ProjectCardProps {
 }
 
 export function ProjectCard({ project, onOpen }: ProjectCardProps) {
-  const cardRef = useRef<HTMLElement>(null)
-  const boundsRef = useRef<DOMRect | null>(null)
-  const reducedMotion = useReducedMotion()
-
-  const motionDisabled = (element: HTMLElement) => reducedMotion || Boolean(element.closest('[data-motion-paused="true"]'))
-
-  const cacheBounds = (event: MouseEvent<HTMLElement>) => {
-    if (motionDisabled(event.currentTarget)) return
-    boundsRef.current = event.currentTarget.getBoundingClientRect()
-  }
-
-  const updatePointer = (event: MouseEvent<HTMLElement>) => {
-    if (motionDisabled(event.currentTarget)) return
-    const bounds = boundsRef.current ?? event.currentTarget.getBoundingClientRect()
-    event.currentTarget.style.setProperty('--pointer-x', `${event.clientX - bounds.left}px`)
-    event.currentTarget.style.setProperty('--pointer-y', `${event.clientY - bounds.top}px`)
-    event.currentTarget.style.setProperty('--pointer-rx', `${((event.clientX - bounds.left) / bounds.width - 0.5) * 2}`)
-    event.currentTarget.style.setProperty('--pointer-ry', `${((event.clientY - bounds.top) / bounds.height - 0.5) * 2}`)
-  }
-
-  const resetPointer = () => {
-    cardRef.current?.style.removeProperty('--pointer-x')
-    cardRef.current?.style.removeProperty('--pointer-y')
-    cardRef.current?.style.removeProperty('--pointer-rx')
-    cardRef.current?.style.removeProperty('--pointer-ry')
-    boundsRef.current = null
-  }
-
   return (
-    <article
-      ref={cardRef}
-      className="project-card reveal"
-      data-accent={project.accent}
-      onMouseEnter={cacheBounds}
-      onMouseMove={updatePointer}
-      onMouseLeave={resetPointer}
-    >
-      <button
-        type="button"
-        className="project-open"
-        aria-label={`${project.name} 케이스 스터디 열기`}
-        data-cursor="OPEN"
-        onClick={() => onOpen(project)}
-      />
-      <div className="project-card-glow" aria-hidden="true" />
-      <header className="project-card-header">
-        <div><span>{project.id}</span><span>{project.category}</span></div>
-        <div><i />{project.status}</div>
-      </header>
-      <ProjectVisual slug={project.slug} accent={project.accent} />
-      <div className="project-card-body">
-        <div className="project-card-title">
-          <span>{project.name} / {project.year}</span>
-          <h3>{project.headline.split('\n').map((line) => <span key={line}>{line}</span>)}</h3>
+    <article className="project-card reveal" data-tone={project.tone} aria-labelledby={`${project.slug}-title`}>
+      <div className="project-card__info">
+        <div className="project-card__meta">
+          <Badge tone={project.tone} variant="weak">
+            {project.category}
+          </Badge>
+          <Badge tone="neutral" variant="outline">
+            {project.status}
+          </Badge>
         </div>
-        <div className="project-card-copy">
-          <p>{project.summary}</p>
-          <ul aria-label="프로젝트 핵심 설계 영역">
-            {project.focus.map((item) => <li key={item}>{item}</li>)}
+
+        <h3 id={`${project.slug}-title`} className="project-card__name">
+          {project.name}
+        </h3>
+        <p className="project-card__headline">{project.headline}</p>
+        <Text as="p" textStyle="t4Regular" color="fg.neutralMuted">
+          {project.summary}
+        </Text>
+
+        <div className="project-card__question">
+          <Text as="p" textStyle="t2Bold" color="fg.neutralSubtle">
+            설계 질문
+          </Text>
+          <Text as="p" textStyle="t4Medium">
+            {project.question}
+          </Text>
+        </div>
+
+        <div className="project-card__footer">
+          <ul className="role-list" aria-label="역할">
+            {project.role.map((role) => (
+              <li key={role}>{role}</li>
+            ))}
           </ul>
-          <div className="project-card-target"><span>{project.targetLabel}</span><strong>{project.target}</strong></div>
+          <ActionButton variant="neutralSolid" size="medium" onClick={() => onOpen(project)}>
+            케이스 스터디
+            <SuffixIcon svg={<IconArrowRightLine />} />
+          </ActionButton>
         </div>
       </div>
-      <div className="project-card-footer">
-        <span>{project.role}</span>
-        <span className="project-card-action">OPEN CASE STUDY <ArrowUpRight size={18} /></span>
+
+      <div className="project-card__specimen">
+        <Text as="p" textStyle="t2Bold" color="fg.neutralSubtle" className="project-card__specimen-label">
+          LIVE SPECIMEN · 직접 조작해 보세요
+        </Text>
+        <ProjectSpecimen slug={project.slug} />
       </div>
     </article>
   )
