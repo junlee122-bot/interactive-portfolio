@@ -1,56 +1,60 @@
-import { ArrowDown, ArrowUpRight } from '../components/Icons'
-import { HeroOrb } from '../components/HeroOrb'
-import { MagneticLink } from '../components/MagneticLink'
-import { SeoulClock } from '../components/SeoulClock'
+import IconArrowDownLine from '@karrotmarket/react-monochrome-icon/IconArrowDownLine'
+import IconArrowUpRightLine from '@karrotmarket/react-monochrome-icon/IconArrowUpRightLine'
+import IconLocationpinLine from '@karrotmarket/react-monochrome-icon/IconLocationpinLine'
+import { Badge, Icon, SuffixIcon } from '@seed-design/react'
+import { ActionButton } from 'seed-design/ui/action-button'
+import { HeroDevice } from '../components/HeroDevice'
+import { profile } from '../data'
 
-interface HeroSectionProps {
-  motionStopped?: boolean
-}
-
-export function HeroSection({ motionStopped = false }: HeroSectionProps) {
+export function HeroSection() {
   return (
     <section className="hero" id="top" aria-labelledby="hero-title">
-      <div className="hero-scanline" aria-hidden="true" />
-      <div className="hero-side-label side-left"><span>PORTFOLIO / 2026</span><i /></div>
-      <div className="hero-side-label side-right"><span>SCROLL TO EXPLORE</span><i /></div>
+      <div className="container hero__grid">
+        <div className="hero__copy">
+          <div className="hero__badges">
+            <Badge tone="brand" variant="weak" size="large">
+              {profile.role}
+            </Badge>
+            <Badge tone="neutral" variant="outline" size="large">
+              {profile.location}
+            </Badge>
+          </div>
 
-      <div className="hero-meta hero-meta-left">
-        <span>FRONTEND / PRODUCT / INTERACTION</span>
-        <span>SEOUL, SOUTH KOREA</span>
-      </div>
-      <div className="hero-meta hero-meta-right">
-        <span>LOCAL SIGNAL</span>
-        <SeoulClock />
-      </div>
+          <h1 id="hero-title" className="hero__title">
+            질문에서 시작해
+            <br />
+            <span className="hero__title-accent">상태로 설계하고,</span>
+            <br />
+            인터랙션으로 증명합니다.
+          </h1>
 
-      <div className="hero-copy hero-sequence">
-        <p className="hero-eyebrow hero-sequence-item"><span>LEE JUN</span><i />THINK CLEARLY. BUILD WITH INTENT.</p>
-        <h1 id="hero-title">
-          <span className="hero-line-mask"><span className="hero-line-inner">생각은 명확하게.</span></span>
-          <span className="hero-line-mask"><span className="hero-line-inner">경험은 <em>감각적으로.</em></span></span>
-        </h1>
-        <div className="hero-description hero-sequence-item">
-          <p>무엇을 만들지 묻고, 어떻게 작동해야 할지 정의합니다. React와 TypeScript로 그 판단을 구현하고, 작은 움직임으로 사용자의 다음 행동을 안내합니다.</p>
-          <span>FROM PRODUCT QUESTIONS<br />TO TANGIBLE INTERFACES.</span>
+          <p className="hero__lead">
+            안녕하세요, 프런트엔드 엔지니어 {profile.name}입니다. 사용자가 해야 할 일과 화면이 전달해야 할 상태를 먼저
+            구분하고, 키보드·작은 화면·줄인 모션에서도 같은 경험이 남도록 만듭니다.
+          </p>
+
+          <div className="hero__actions">
+            <ActionButton asChild variant="brandSolid" size="large">
+              <a href="#work">
+                작업 살펴보기
+                <SuffixIcon svg={<IconArrowDownLine />} />
+              </a>
+            </ActionButton>
+            <ActionButton asChild variant="neutralWeak" size="large">
+              <a href={profile.github} target="_blank" rel="noreferrer">
+                GitHub
+                <SuffixIcon svg={<IconArrowUpRightLine />} />
+              </a>
+            </ActionButton>
+          </div>
+
+          <p className="hero__note">
+            <Icon svg={<IconLocationpinLine />} size="x4" />
+            이 사이트는 당근의 오픈소스 디자인 시스템 SEED Design으로 다시 만들었습니다.
+          </p>
         </div>
-        <div className="hero-actions hero-sequence-item">
-          <MagneticLink href="#work" className="button button-primary" cursorLabel="EXPLORE">
-            <span>작업과 판단 살펴보기</span><ArrowDown size={18} />
-          </MagneticLink>
-          <MagneticLink href="https://github.com/junlee122-bot/interactive" className="button button-secondary" target="_blank" cursorLabel="SOURCE">
-            <span>코드로 확인하기</span><ArrowUpRight size={18} />
-          </MagneticLink>
-        </div>
-        <p className="hero-disclosure hero-sequence-item"><i /> 3개의 독립 콘셉트 스터디와 직접 조작할 수 있는 인터랙션 실험. 설계한 것과 구현한 것을 구분해 소개합니다.</p>
-      </div>
 
-      <HeroOrb paused={motionStopped} />
-
-      <div className="proof-strip">
-        <div><strong>03</strong><span>CONCEPT STUDIES<br />문제와 선택의 기록</span></div>
-        <div><strong>LIVE</strong><span>INTERACTION LAB<br />직접 확인하는 동작</span></div>
-        <div><strong>OPEN</strong><span>SOURCE AVAILABLE<br />코드까지 열어 둔 과정</span></div>
-        <div className="proof-signal"><span>LOGIC INTO EXPERIENCE</span><b aria-hidden="true"><i /><i /><i /><i /><i /></b><em>EXPLORE THE SIGNAL</em></div>
+        <HeroDevice />
       </div>
     </section>
   )
