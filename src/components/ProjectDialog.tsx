@@ -48,6 +48,11 @@ export function ProjectDialog({ project, onClose }: ProjectDialogProps) {
               </Text>
             </div>
 
+            <p className="project-role project-role--dialog">
+              <span>역할</span>
+              {shown.role}
+            </p>
+
             {shown.image && (
               <img className="project-dialog__image" src={shown.image} alt={shown.imageAlt ?? ''} loading="lazy" />
             )}

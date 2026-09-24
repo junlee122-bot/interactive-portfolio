@@ -10,7 +10,7 @@ export function FeaturedSection({ onOpenProject }: { onOpenProject: (slug: strin
           id="work-title"
           eyebrow="Selected work"
           title="대표 작업"
-          description="앱, 공모전 출품작, 게임, 연구 도구 중에서 문제와 검증 과정이 가장 분명한 여섯 개를 골랐습니다. 카드를 누르면 만든 것, 설계, 한계를 볼 수 있습니다."
+          description="문제가 선명하고 검증까지 끝까지 밀어붙인 여섯 개를 골랐습니다. 카드를 열면 무엇을 만들었는지, 어떻게 설계했는지, 어디가 아직인지까지 볼 수 있습니다."
         />
         <div className="featured-grid">
           {featuredProjects.map((project) => (

@@ -41,6 +41,10 @@ export function FeaturedCard({ project, onOpen }: { project: Project; onOpen: (s
         <Text as="p" textStyle="t5Regular" color="fg.neutralMuted">
           {project.tagline}
         </Text>
+        <p className="project-role">
+          <span>역할</span>
+          {project.role}
+        </p>
 
         {project.numbers && (
           <dl className="number-row">
