@@ -2,7 +2,7 @@ import IconMoonLine from '@karrotmarket/react-monochrome-icon/IconMoonLine'
 import IconSunLine from '@karrotmarket/react-monochrome-icon/IconSunLine'
 import { Icon } from '@seed-design/react'
 import { SegmentedControl, SegmentedControlItem } from 'seed-design/ui/segmented-control'
-import { navigation, profile } from '../data'
+import { navigation, profile } from '../data/profile'
 import { useActiveSection } from '../hooks/useActiveSection'
 import { useColorMode, type ColorMode } from '../hooks/useColorMode'
 
@@ -17,7 +17,7 @@ export function SiteHeader() {
       <div className="site-header__inner">
         <a className="brand-mark" href="#top" aria-label={`${profile.name} 포트폴리오 맨 위로`}>
           <span className="brand-mark__dot" aria-hidden="true" />
-          <span>jun.lee</span>
+          <span>{profile.name}</span>
         </a>
 
         <nav className="site-nav" aria-label="주요 섹션">
