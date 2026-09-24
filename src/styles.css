@@ -20,8 +20,21 @@
 }
 
 html {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
   scroll-behavior: smooth;
   -webkit-text-size-adjust: 100%;
+}
+
+h1,
+h2,
+h3 {
+  text-wrap: balance;
+}
+
+p,
+li {
+  text-wrap: pretty;
 }
 
 body {
@@ -30,7 +43,6 @@ body {
   background: var(--seed-color-bg-layer-default);
   color: var(--seed-color-fg-neutral);
   font-family: 'Pretendard Variable', var(--seed-font-family);
-  -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
   word-break: keep-all;
   overflow-wrap: break-word;
@@ -267,6 +279,8 @@ a {
 }
 
 .hero-device__frame {
+  /* A phone bezel radius mirrors real hardware, not a card style. */
+  --slop-allow: over-rounded-card;
   position: relative;
   z-index: 1;
   display: flex;
@@ -471,7 +485,6 @@ a {
   overflow: hidden;
   border: 1px solid var(--seed-color-stroke-neutral-muted);
   border-radius: var(--card-radius);
-  background: var(--seed-color-bg-layer-default);
 }
 
 .project-card__info {
@@ -516,8 +529,7 @@ a {
   flex-direction: column;
   gap: 6px;
   padding: 16px 18px;
-  border-left: 3px solid var(--tone-solid);
-  border-radius: 0 var(--seed-radius-r3) var(--seed-radius-r3) 0;
+  border-radius: var(--seed-radius-r3);
   background: var(--seed-color-bg-neutral-weak);
 }
 
@@ -596,7 +608,6 @@ a {
   padding: clamp(18px, 2.4vw, 28px);
   border-radius: var(--seed-radius-r5);
   background: var(--seed-color-bg-layer-floating);
-  box-shadow: var(--seed-shadow-s1);
 }
 
 .specimen__result {
@@ -728,6 +739,8 @@ a {
 }
 
 .moment-entry__photo {
+  /* Stands in for a sunrise photo, so the gradient is the picture itself. */
+  --slop-allow: gradient-fill;
   flex-shrink: 0;
   width: 72px;
   height: 72px;
@@ -1013,7 +1026,6 @@ a {
   gap: 16px;
   min-height: 460px;
   padding: 20px;
-  border: 1px solid var(--seed-color-stroke-neutral-muted);
   border-radius: var(--card-radius);
   background: var(--seed-color-bg-layer-floating);
   box-shadow: var(--seed-shadow-s2);
@@ -1051,7 +1063,7 @@ a {
   width: 52px;
   height: 52px;
   border-radius: var(--seed-radius-r3);
-  background: linear-gradient(135deg, var(--seed-color-palette-carrot-200), var(--seed-color-palette-carrot-400));
+  background: var(--seed-color-palette-carrot-200);
 }
 
 .skeleton-row {
