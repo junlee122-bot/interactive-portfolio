@@ -550,6 +550,26 @@ a {
   }
 }
 
+/* Role line shared by the featured card and the dialog. */
+.project-role {
+  display: flex;
+  gap: 10px;
+  color: var(--seed-color-fg-neutral);
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 1.5;
+}
+
+.project-role span {
+  flex-shrink: 0;
+  color: var(--seed-color-fg-brand);
+  font-weight: 700;
+}
+
+.project-role--dialog {
+  margin-bottom: 16px;
+}
+
 /* Project index */
 
 .index-filters {

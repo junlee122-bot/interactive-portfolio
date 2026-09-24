@@ -23,7 +23,7 @@ export function IndexSection({ onOpenProject }: { onOpenProject: (slug: string) 
           id="index-title"
           eyebrow="All projects"
           title="전체 작업"
-          description="공개 저장소와 공개 배포를 기준으로 정리했습니다. 비공개 저장소는 공개된 화면으로 확인할 수 있는 내용만 적었습니다."
+          description="다섯 달 동안 만든 것들입니다. 공개 저장소와 공개 배포를 기준으로 정리했고, 비공개 저장소는 공개된 화면으로 확인되는 내용만 담았습니다."
         />
 
         <Chip.RadioRoot
