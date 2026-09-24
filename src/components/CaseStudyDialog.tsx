@@ -28,7 +28,7 @@ export function CaseStudyDialog({ project, onClose, onNext }: CaseStudyDialogPro
       {shown && (
         <DialogContent
           className="case-dialog"
-          title={`${shown.id} · ${shown.name}`}
+          title={shown.name}
           description={shown.headline.replace('\n', ' ')}
         >
           <DialogBody>
@@ -52,15 +52,14 @@ export function CaseStudyDialog({ project, onClose, onNext }: CaseStudyDialogPro
                 <div className="case-dialog__panel">
                   <CaseBlock title="문제">{shown.challenge}</CaseBlock>
                   <CaseBlock title="가설">{shown.hypothesis}</CaseBlock>
-                  <CaseBlock title="역할">{shown.role.join(' · ')}</CaseBlock>
+                  <CaseBlock title="역할">{shown.role.join(', ')}</CaseBlock>
                 </div>
               </TabsContent>
 
               <TabsContent value="decisions">
                 <ol className="case-dialog__panel decision-list">
-                  {shown.decisions.map((decision, index) => (
+                  {shown.decisions.map((decision) => (
                     <li key={decision.title} className="decision">
-                      <span className="decision__index">{String(index + 1).padStart(2, '0')}</span>
                       <div>
                         <Text as="h4" textStyle="t5Bold">
                           {decision.title}

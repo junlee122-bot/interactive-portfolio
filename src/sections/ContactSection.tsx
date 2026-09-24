@@ -69,7 +69,7 @@ export function ContactSection() {
               rel="noreferrer"
               prefix={<Icon svg={<IconBracketLeftArrowRightLine />} size="x6" />}
               title="이 포트폴리오의 소스"
-              detail="React · TypeScript · SEED Design"
+              detail="React, TypeScript, SEED Design"
               suffix={<Icon svg={<IconArrowUpRightLine />} size="x4" />}
             />
           </List>
@@ -78,7 +78,7 @@ export function ContactSection() {
               대화를 시작하기 좋은 재료
             </Text>
             <Text as="p" textStyle="t4Medium">
-              문제의 맥락 · 함께 확인할 범위 · 생각하고 있는 일정
+              문제의 맥락, 함께 확인할 범위, 생각하고 있는 일정
             </Text>
           </div>
         </div>

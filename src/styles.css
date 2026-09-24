@@ -226,9 +226,9 @@ a {
 }
 
 .hero__title {
-  font-size: clamp(38px, 6.2vw, 76px);
+  font-size: clamp(34px, 4.8vw, 60px);
   font-weight: 800;
-  line-height: 1.12;
+  line-height: 1.18;
   letter-spacing: -0.035em;
 }
 
@@ -501,14 +501,6 @@ a {
   gap: 8px;
 }
 
-.project-card__index {
-  margin-right: 4px;
-  color: var(--seed-color-fg-neutral-subtle);
-  font-size: 14px;
-  font-weight: 700;
-  font-variant-numeric: tabular-nums;
-}
-
 .project-card__name {
   font-size: clamp(36px, 5vw, 56px);
   font-weight: 900;
@@ -546,15 +538,10 @@ a {
 .role-list {
   display: flex;
   flex-wrap: wrap;
-  gap: 6px 12px;
+  gap: 6px 16px;
   color: var(--seed-color-fg-neutral-subtle);
   font-size: 13px;
   font-weight: 600;
-}
-
-.role-list li + li::before {
-  content: '·';
-  margin-right: 12px;
 }
 
 .project-card__specimen {
@@ -789,22 +776,10 @@ a {
   line-height: 1.7;
 }
 
-.decision {
-  display: grid;
-  grid-template-columns: auto 1fr;
-  gap: 14px;
-}
-
 .decision > div {
   display: flex;
   flex-direction: column;
   gap: 6px;
-}
-
-.decision__index {
-  color: var(--seed-color-fg-brand);
-  font-weight: 800;
-  font-variant-numeric: tabular-nums;
 }
 
 .decision__tradeoff {

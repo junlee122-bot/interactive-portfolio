@@ -14,7 +14,6 @@ export function ProjectCard({ project, onOpen }: ProjectCardProps) {
     <article className="project-card reveal" data-tone={project.tone} aria-labelledby={`${project.slug}-title`}>
       <div className="project-card__info">
         <div className="project-card__meta">
-          <span className="project-card__index">{project.id}</span>
           <Badge tone={project.tone} variant="weak">
             {project.category}
           </Badge>

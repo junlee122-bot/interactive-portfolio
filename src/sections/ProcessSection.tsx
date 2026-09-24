@@ -54,7 +54,7 @@ export function ProcessSection() {
 
           <div className="process__panel" role="tabpanel" id="step-panel" aria-labelledby={`step-tab-${active.id}`} key={active.id}>
             <Text as="p" textStyle="t3Bold" color="fg.brand">
-              {active.id} / {active.name}
+              {active.name}
             </Text>
             <Text as="h3" textStyle="t8Bold">
               {active.title}
@@ -76,7 +76,7 @@ export function ProcessSection() {
           {principles.map((principle, index) => (
             <article key={principle.label} className="principle reveal" style={{ transitionDelay: `${index * 80}ms` }}>
               <Text as="p" textStyle="t2Bold" color="fg.neutralSubtle">
-                {String(index + 1).padStart(2, '0')} · {principle.label.toUpperCase()}
+                {principle.label}
               </Text>
               <Text as="h3" textStyle="t6Bold">
                 {principle.title}
